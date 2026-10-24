@@ -245,6 +245,28 @@
         </form>
       </div>
     </section>
+
+    <!-- ========== NEWSLETTER ========== -->
+    <section class="section section--alt" id="newsletter">
+      <div class="container newsletter reveal">
+        <h2 class="section__title section__title--center">Stay in the loop</h2>
+        <p class="newsletter__lead">
+          Get a short email when I ship a new project or publish a post.
+        </p>
+        <form class="newsletter__form" id="newsletterForm" novalidate>
+          <label class="sr-only" for="newsletterEmail">Email address</label>
+          <input
+            type="email" id="newsletterEmail" name="email" placeholder="you@example.com"
+            autocomplete="email" required aria-describedby="newsletterStatus"
+          />
+          <!-- Honeypot: bots fill this, humans never see it -->
+          <input type="text" name="_gotcha" class="newsletter__hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button type="submit" class="btn btn--primary">Subscribe</button>
+        </form>
+        <p class="newsletter__status" id="newsletterStatus" role="status" aria-live="polite"></p>
+        <p class="form-note">No spam, unsubscribe anytime.</p>
+      </div>
+    </section>
   </main>
 
   <footer class="footer">
