@@ -374,7 +374,7 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 720px) {
-  .nav__burger { display: flex; }
+  .nav__burger { display: flex; align-items: center; justify-content: center; }
   .nav__links {
     position: fixed; top: var(--nav-h); left: 0; right: 0;
     flex-direction: column; gap: 0;
@@ -387,4 +387,35 @@ img { max-width: 100%; display: block; }
   .section { padding: 80px 0; }
   .field-row { grid-template-columns: 1fr; }
   .scroll-hint { display: none; }
+
+  /* Hero */
+  .hero { min-height: auto; }
+  .hero__inner { gap: 32px; padding: 32px 0 72px; }
+  .hero__name { font-size: clamp(2.8rem, 13vw, 4rem); letter-spacing: -1.5px; }
+  .hero__role { font-size: clamp(1.25rem, 6vw, 1.6rem); margin: 12px 0 16px; }
+  .hero__lead { font-size: 1rem; }
+  .hero__cta { gap: 12px; margin: 28px 0; }
+
+  /* Section titles */
+  .section__title { font-size: clamp(1.6rem, 7vw, 2rem); margin-bottom: 32px; gap: 10px; }
+  .section__title::after { max-width: none; }
+  .about__text p { font-size: 1rem; }
+
+  /* Timeline */
+  .timeline { padding-left: 26px; }
+  .timeline::before { left: 5px; }
+  .timeline__item { padding-bottom: 32px; }
+  .timeline__item::before { left: -26px; width: 12px; height: 12px; }
+  .timeline__item h3 { font-size: 1.05rem; line-height: 1.4; }
+  .timeline__item h3 span { display: block; font-size: 0.95rem; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 64px 0; }
+  .hero__cta .btn { flex: 1 1 100%; justify-content: center; }
+  .hero__cta .btn--ghost { flex-basis: calc(50% - 6px); padding-inline: 16px; }
+  .skill-group { padding: 22px; }
+  .project__body { padding: 20px; }
+  .stat { padding: 18px 20px; }
+  .to-top { right: 16px; bottom: 16px; }
 }
