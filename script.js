@@ -147,10 +147,10 @@ const newsletterEmail = document.getElementById("newsletterEmail");
 const newsletterStatus = document.getElementById("newsletterStatus");
 const newsletterButton = newsletterForm.querySelector("button[type=submit]");
 
-function setNewsletterStatus(message, type) {
+function setNewsletterStatus(message, type, invalid = false) {
   newsletterStatus.textContent = message;
   newsletterStatus.className = `newsletter__status${type ? ` is-${type}` : ""}`;
-  newsletterEmail.setAttribute("aria-invalid", type === "error" ? "true" : "false");
+  newsletterEmail.setAttribute("aria-invalid", String(invalid));
 }
 
 newsletterEmail.addEventListener("input", () => {
@@ -161,8 +161,8 @@ newsletterForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = newsletterEmail.value.trim();
 
-  if (!email) return setNewsletterStatus("Please enter your email address.", "error");
-  if (!EMAIL_PATTERN.test(email)) return setNewsletterStatus("That email doesn't look right. Try name@example.com.", "error");
+  if (!email) return setNewsletterStatus("Please enter your email address.", "error", true);
+  if (!EMAIL_PATTERN.test(email)) return setNewsletterStatus("That email doesn't look right. Try name@example.com.", "error", true);
   if (!NEWSLETTER_ENDPOINT.startsWith("https://")) {
     return setNewsletterStatus("Signups aren't open yet. Please check back soon.", "error");
   }
