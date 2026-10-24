@@ -136,5 +136,57 @@ document.getElementById("contactForm").addEventListener("submit", (e) => {
   window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
 });
 
+// ========== NEWSLETTER SIGNUP (static-friendly form service) ==========
+// TODO(issue #2): replace with the real endpoint once the provider is chosen,
+// e.g. Formspree: "https://formspree.io/f/<form-id>". Until then nothing is sent.
+const NEWSLETTER_ENDPOINT = "REPLACE_WITH_NEWSLETTER_ENDPOINT";
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+const newsletterForm = document.getElementById("newsletterForm");
+const newsletterEmail = document.getElementById("newsletterEmail");
+const newsletterStatus = document.getElementById("newsletterStatus");
+const newsletterButton = newsletterForm.querySelector("button[type=submit]");
+
+function setNewsletterStatus(message, type) {
+  newsletterStatus.textContent = message;
+  newsletterStatus.className = `newsletter__status${type ? ` is-${type}` : ""}`;
+  newsletterEmail.setAttribute("aria-invalid", type === "error" ? "true" : "false");
+}
+
+newsletterEmail.addEventListener("input", () => {
+  if (newsletterStatus.classList.contains("is-error")) setNewsletterStatus("", null);
+});
+
+newsletterForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const email = newsletterEmail.value.trim();
+
+  if (!email) return setNewsletterStatus("Please enter your email address.", "error");
+  if (!EMAIL_PATTERN.test(email)) return setNewsletterStatus("That email doesn't look right. Try name@example.com.", "error");
+  if (!NEWSLETTER_ENDPOINT.startsWith("https://")) {
+    return setNewsletterStatus("Signups aren't open yet. Please check back soon.", "error");
+  }
+
+  newsletterButton.disabled = true;
+  newsletterButton.textContent = "Subscribing…";
+  setNewsletterStatus("", null);
+
+  try {
+    const res = await fetch(NEWSLETTER_ENDPOINT, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: new FormData(newsletterForm),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    newsletterForm.reset();
+    setNewsletterStatus("You're in! Thanks for subscribing.", "success");
+  } catch {
+    setNewsletterStatus("Something went wrong. Please try again in a moment.", "error");
+  } finally {
+    newsletterButton.disabled = false;
+    newsletterButton.textContent = "Subscribe";
+  }
+});
+
 // ========== FOOTER YEAR ==========
 document.getElementById("year").textContent = new Date().getFullYear();
