@@ -64,8 +64,10 @@
         </div>
         <div class="hero__visual">
           <div class="avatar">
-            <!-- Replace with <img src="me.jpg" alt="Fahim"> -->
-            <span>F</span>
+            <!-- Profile photo: drop your photo in images/ (e.g. images/profile.jpg) and update src.
+                 If the image fails to load, the "F" initial underneath shows instead. -->
+            <span class="avatar__fallback" aria-hidden="true">F</span>
+            <img src="images/profile.svg" alt="Portrait of Fahim" width="400" height="400" data-fallback />
           </div>
           <div class="code-card">
             <pre><code><span class="k">const</span> fahim = {
