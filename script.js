@@ -17,6 +17,15 @@ themeToggle.addEventListener("click", () => {
   try { localStorage.setItem("theme", next); } catch {}
 });
 
+// ========== IMAGE FALLBACKS ==========
+// Images marked data-fallback sit on top of fallback content (initial, emoji).
+// If one fails to load, remove it so the fallback underneath shows.
+document.querySelectorAll("img[data-fallback]").forEach((img) => {
+  const fail = () => img.remove();
+  if (img.complete && img.naturalWidth === 0) fail();
+  else img.addEventListener("error", fail, { once: true });
+});
+
 // ========== MOBILE MENU ==========
 const burger = document.getElementById("burger");
 const navLinks = document.getElementById("navLinks");

@@ -49,6 +49,11 @@
           <div class="hero__cta">
             <a href="#projects" class="btn btn--primary">See my work</a>
             <a href="#contact" class="btn btn--ghost">Get in touch</a>
+            <!-- Replace files/fahim-cv.pdf with your real CV (keep the same name, or update href). -->
+            <a href="files/fahim-cv.pdf" class="btn btn--ghost btn--download" download="Fahim-CV.pdf">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+              Download CV
+            </a>
           </div>
           <div class="hero__social">
             <a href="https://github.com/your-username" target="_blank" rel="noopener" aria-label="GitHub">
@@ -64,8 +69,10 @@
         </div>
         <div class="hero__visual">
           <div class="avatar">
-            <!-- Replace with <img src="me.jpg" alt="Fahim"> -->
-            <span>F</span>
+            <!-- Profile photo: drop your photo in images/ (e.g. images/profile.jpg) and update src.
+                 If the image fails to load, the "F" initial underneath shows instead. -->
+            <span class="avatar__fallback" aria-hidden="true">F</span>
+            <img src="images/profile.svg" alt="Portrait of Fahim" width="400" height="400" data-fallback />
           </div>
           <div class="code-card">
             <pre><code><span class="k">const</span> fahim = {
@@ -151,9 +158,13 @@
           <button class="filter" data-filter="api">Backend</button>
           <button class="filter" data-filter="tool">Tools</button>
         </div>
+        <!-- Screenshots live in images/projects/ (16:9). If one fails to load, the emoji shows instead. -->
         <div class="projects" id="projectGrid">
           <article class="project reveal" data-cat="web">
-            <div class="project__thumb" style="--hue: 250">🎙️</div>
+            <div class="project__thumb" style="--hue: 250">
+              <span class="project__fallback" aria-hidden="true">🎙️</span>
+              <img src="images/projects/meeting-analyzer.svg" alt="Screenshot of the Meeting Analyzer" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Meeting Analyzer</h3>
               <p>A platform that records and analyzes meetings, giving teams summaries, insights and action items.</p>
@@ -165,7 +176,10 @@
             </div>
           </article>
           <article class="project reveal" data-cat="tool">
-            <div class="project__thumb" style="--hue: 160">⚙️</div>
+            <div class="project__thumb" style="--hue: 160">
+              <span class="project__fallback" aria-hidden="true">⚙️</span>
+              <img src="images/projects/personal-automation.svg" alt="Screenshot of the Personal Automation" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Personal Automation</h3>
               <p>Scripts and AI-powered workflows that automate everyday dev tasks, from ticket triage to QA.</p>
@@ -176,7 +190,10 @@
             </div>
           </article>
           <article class="project reveal" data-cat="api">
-            <div class="project__thumb" style="--hue: 20">🔌</div>
+            <div class="project__thumb" style="--hue: 20">
+              <span class="project__fallback" aria-hidden="true">🔌</span>
+              <img src="images/projects/project-api.svg" alt="Screenshot of the backend project" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Project Name</h3>
               <p>Short description of a backend or API project you're proud of. What problem did it solve?</p>
@@ -187,7 +204,10 @@
             </div>
           </article>
           <article class="project reveal" data-cat="web">
-            <div class="project__thumb" style="--hue: 320">🛍️</div>
+            <div class="project__thumb" style="--hue: 320">
+              <span class="project__fallback" aria-hidden="true">🛍️</span>
+              <img src="images/projects/project-web.svg" alt="Screenshot of the web project" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Project Name</h3>
               <p>Short description of another web project. Mention the impact or the most interesting challenge.</p>
