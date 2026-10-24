@@ -153,9 +153,13 @@
           <button class="filter" data-filter="api">Backend</button>
           <button class="filter" data-filter="tool">Tools</button>
         </div>
+        <!-- Screenshots live in images/projects/ (16:9). If one fails to load, the emoji shows instead. -->
         <div class="projects" id="projectGrid">
           <article class="project reveal" data-cat="web">
-            <div class="project__thumb" style="--hue: 250">🎙️</div>
+            <div class="project__thumb" style="--hue: 250">
+              <span class="project__fallback" aria-hidden="true">🎙️</span>
+              <img src="images/projects/meeting-analyzer.svg" alt="Screenshot of the Meeting Analyzer" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Meeting Analyzer</h3>
               <p>A platform that records and analyzes meetings, giving teams summaries, insights and action items.</p>
@@ -167,7 +171,10 @@
             </div>
           </article>
           <article class="project reveal" data-cat="tool">
-            <div class="project__thumb" style="--hue: 160">⚙️</div>
+            <div class="project__thumb" style="--hue: 160">
+              <span class="project__fallback" aria-hidden="true">⚙️</span>
+              <img src="images/projects/personal-automation.svg" alt="Screenshot of the Personal Automation" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Personal Automation</h3>
               <p>Scripts and AI-powered workflows that automate everyday dev tasks, from ticket triage to QA.</p>
@@ -178,7 +185,10 @@
             </div>
           </article>
           <article class="project reveal" data-cat="api">
-            <div class="project__thumb" style="--hue: 20">🔌</div>
+            <div class="project__thumb" style="--hue: 20">
+              <span class="project__fallback" aria-hidden="true">🔌</span>
+              <img src="images/projects/project-api.svg" alt="Screenshot of the backend project" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Project Name</h3>
               <p>Short description of a backend or API project you're proud of. What problem did it solve?</p>
@@ -189,7 +199,10 @@
             </div>
           </article>
           <article class="project reveal" data-cat="web">
-            <div class="project__thumb" style="--hue: 320">🛍️</div>
+            <div class="project__thumb" style="--hue: 320">
+              <span class="project__fallback" aria-hidden="true">🛍️</span>
+              <img src="images/projects/project-web.svg" alt="Screenshot of the web project" width="800" height="450" loading="lazy" data-fallback />
+            </div>
             <div class="project__body">
               <h3>Project Name</h3>
               <p>Short description of another web project. Mention the impact or the most interesting challenge.</p>
